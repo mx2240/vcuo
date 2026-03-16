@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="bg_deep">#0B081B</color>
+
+    <color name="electric_purple">#601EF9</color>
+    <color name="soft_lavender">#A78BFA</color>
+    <color name="sky_blue">#80E2F2</color>
+    <color name="muted_grey_blue">#9AA5FF</color>
+
+    <!-- Glass / Overlay -->
+    <color name="glass_white">#1FFFFFFF</color>
+    <color name="glass_border">#33FFFFFF</color>
+
+
+
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+
+
+
+</resources>
+
+
+
+
+

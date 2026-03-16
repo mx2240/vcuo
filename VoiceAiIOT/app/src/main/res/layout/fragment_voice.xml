@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_gradient"
+    android:padding="20dp"
+    tools:context=".VoiceFragment">
+
+    <!-- Result/Prompt Text -->
+    <TextView
+        android:id="@+id/txtResult"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="80dp"
+        android:text="Say 'Hello Alora'"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp" />
+
+    <!-- Mic Button and Glow Layout -->
+    <FrameLayout
+        android:id="@+id/mic_button_container"
+        android:layout_width="220dp"
+        android:layout_height="220dp"
+        android:layout_centerInParent="true">
+
+        <!-- Glow Effect View -->
+        <View
+            android:id="@+id/micGlow"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:alpha="0.3"
+            android:background="@drawable/mic_glow" />
+
+        <!-- Mic Button -->
+        <ImageButton
+            android:id="@+id/btnSpeak"
+            android:layout_width="127dp"
+            android:layout_height="120dp"
+            android:layout_gravity="center"
+            android:background="@drawable/mic_glow_bg"
+            android:contentDescription="Start Voice Command"
+            android:scaleType="centerInside"
+            android:src="@android:drawable/ic_btn_speak_now"
+            app:tint="@android:color/white" />
+    </FrameLayout>
+
+    <!-- Status Text -->
+    <TextView
+        android:id="@+id/txtStatus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="16dp"
+        android:drawablePadding="8dp"
+        android:gravity="center"
+        android:text="Checking ESP32..."
+        android:textColor="#00FF00"
+        android:textSize="14sp" />
+
+</RelativeLayout>

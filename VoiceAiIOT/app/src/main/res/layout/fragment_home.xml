@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_gradient"
+    android:padding="24dp"
+    tools:context=".HomeFragment">
+
+    <!-- Greeting Section -->
+    <TextView
+        android:id="@+id/txtGreeting"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hi, ANASTACIA!"
+        android:textColor="#FFFFFF"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/txtMorning"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/txtGreeting"
+        android:layout_marginTop="4dp"
+        android:text="Good Morning!"
+        android:textColor="#A78BFA"
+        android:textSize="16sp" />
+
+    <!-- Energy Card -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/energyCard"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/txtMorning"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/glass_card"
+        android:elevation="8dp"
+        android:padding="20dp">
+
+        <ImageView
+            android:id="@+id/energy_icon"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:contentDescription="Energy Usage Icon"
+            android:src="@drawable/ic_energy"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="#A78BFA" />
+
+        <TextView
+            android:id="@+id/energy_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="Energy usage"
+            android:textColor="#A78BFA"
+            android:textSize="16sp"
+            app:layout_constraintStart_toEndOf="@id/energy_icon"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/energy_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="150.8 KWh"
+            android:textColor="#80E2F2"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@id/energy_label"
+            app:layout_constraintTop_toBottomOf="@id/energy_label" />
+
+        <TextView
+            android:id="@+id/energy_sub_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="This month"
+            android:textColor="#A78BFA"
+            android:textSize="12sp"
+            app:layout_constraintBaseline_toBaselineOf="@id/energy_value"
+            app:layout_constraintStart_toEndOf="@id/energy_value" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!-- FIX 1: Use GridLayout correctly within RelativeLayout -->
+    <GridLayout
+        android:id="@+id/deviceGrid"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/energyCard"
+        android:layout_marginTop="20dp"
+        android:columnCount="2">
+
+        <!-- FIX 2: Switched to MaterialCardView for better design and consistency -->
+        <!-- WIFI CARD -->
+        <com.google.android.material.card.MaterialCardView
+            style="@style/DeviceCard">
+
+            <LinearLayout
+                style="@style/DeviceCard.Content"
+                android:background="#673AB7">
+
+                <TextView
+                    style="@style/DeviceCard.Title"
+                    android:text="Wi-Fi" />
+
+                <com.google.android.material.switchmaterial.SwitchMaterial style="@style/DeviceCard.Switch" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- AC CARD -->
+        <com.google.android.material.card.MaterialCardView
+            style="@style/DeviceCard">
+
+            <LinearLayout
+                style="@style/DeviceCard.Content"
+                android:background="#673AB7">
+
+                <TextView
+                    style="@style/DeviceCard.Title"
+                    android:text="Air Conditioner" />
+
+                <TextView
+                    style="@style/DeviceCard.Value"
+                    android:text="24°C" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- LIGHT CARD -->
+        <com.google.android.material.card.MaterialCardView
+            style="@style/DeviceCard">
+
+            <LinearLayout
+                style="@style/DeviceCard.Content"
+                android:background="#673AB7">
+
+                <TextView
+                    style="@style/DeviceCard.Title"
+                    android:text="Lights" />
+
+                <com.google.android.material.switchmaterial.SwitchMaterial style="@style/DeviceCard.Switch" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- You can add a 4th card here if needed -->
+
+    </GridLayout>
+
+</RelativeLayout>

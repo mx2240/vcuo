@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/nav_song"
+        android:title="Song" />
+    <item
+        android:id="@+id/nav_Artist"
+        android:title="Artist" />
+    <item
+        android:id="@+id/nav_Album"
+        android:title="Album" />
+</menu>

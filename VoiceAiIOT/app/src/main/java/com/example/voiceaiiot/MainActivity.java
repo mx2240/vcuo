@@ -16,10 +16,10 @@ public class MainActivity extends AppCompatActivity {
         BottomNavigationView bottomNav = findViewById(R.id.bottomNav);
 
         // --- FIX 1: Set a default selected item and load the initial fragment ---
-        // This ensures the app starts on the home screen and the correct icon is highlighted.
+        // This ensures the app starts on the home screen if it's the first time loading.
         if (savedInstanceState == null) {
             bottomNav.setSelectedItemId(R.id.nav_home); // Highlight the home icon
-            loadFragment(new HomeFragment(), false); // Load HomeFragment without animation on start
+            loadFragment(new HomeFragment(), false);    // Load HomeFragment without animation
         }
 
         // --- FIX 2: A single, correct listener for item selection ---
@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
             Fragment selectedFragment = null;
             int itemId = item.getItemId();
 
-            // Using a switch statement is cleaner for multiple items
+            // Mapping menu IDs to their respective fragments
             if (itemId == R.id.nav_home) {
                 selectedFragment = new HomeFragment();
             } else if (itemId == R.id.nav_voice) {
@@ -37,12 +37,13 @@ public class MainActivity extends AppCompatActivity {
             } else if (itemId == R.id.nav_profile) {
                 selectedFragment = new ProfileFragment();
             }
-            // Note: I've corrected the menu items to match your likely `bottom_menu.xml`
-            // (home, voice, chat, profile).
 
-            // Load the selected fragment with an animation
-            loadFragment(selectedFragment, true);
-            return true; // The listener must return true to show the item as selected
+            // Load the selected fragment with animation
+            if (selectedFragment != null) {
+                loadFragment(selectedFragment, true);
+                return true; // Return true to visually select the item
+            }
+            return false;
         });
     }
 
@@ -55,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
         if (fragment != null) {
             getSupportFragmentManager()
                     .beginTransaction()
-                    // --- FIX 3: Added animations for a smoother user experience ---
+                    // Set animations: Use internal android resources for simple fades
                     .setCustomAnimations(
                             withAnimation ? android.R.anim.fade_in : 0,
                             withAnimation ? android.R.anim.fade_out : 0
